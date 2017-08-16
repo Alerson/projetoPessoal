@@ -1,0 +1,30 @@
+@CHARSET "ISO-8859-1";
+
+.ui-widget, .ui-widget .ui-widget {
+	font-size: 17px !important;
+}
+
+.inputFileUpload {
+	width: 400px !important;
+}
+
+.ui-layout-north {
+	z-index: 20 !important;
+	overflow: visible !important;
+}
+
+.ui-layout-north .ui-layout-unit-content {
+	overflow: visible !important;
+}
+
+.ui-datatable .ui-datatable-header {
+	border-bottom: 0 none;
+	height: 25px;
+}
+
+.ui-menubar .ui-menubar-options {
+	float: right; 
+	margin-top: 7px;	
+	margin-right: 5px;
+}
+
