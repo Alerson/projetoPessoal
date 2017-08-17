@@ -6,14 +6,49 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 	<h:form id="formListaEnderecos" prependId="false">
+
+		<p:fieldset style="margin-bottom:20px; margin-top: 15px;" legend="Dados de entrada" id="idLayoutCamposEntrada">
+			<p:outputLabel id="idLocalidadeLbl" value="#{proper['proper.label.localidade']}" />
+			<p:inputText style="margin-left: 10px;" id="idLocalidadeTxt" />
+	
+			<p:outputLabel style="margin-left: 20px;" id="idUfLbl" value="#{proper['proper.label.uf']}" />
+			<p:inputText style="margin-left: 10px;" id="idUfTxt" />
+	
+			<p:outputLabel style="margin-left: 20px;" id="idLogradouroLbl" value="#{proper['proper.label.logradouro']}" />
+			<p:inputText style="margin-left: 10px;" id="idLogradouroTxt" />
+
+			<p:commandButton style="margin-left: 20px;" value="#{proper['proper.label.buttonBuscar']}" icon="fa fa-refresh" />
+		</p:fieldset>
+
 		<p:dataTable id="idDataTableEndereco"
 			emptyMessage="Nenhum registro encontrado">
-			<p:column id="columOne" headerText="Coluna Um">
+			<p:column id="colunaUm" headerText="#{proper['proper.label.cep']}">
 				Conteúdo um
 			</p:column>
-			<p:column id="columnTwo" headerText="Coluna Dois">
+			<p:column id="colunaDois" headerText="#{proper['proper.label.logradouro']}">
 				Conteúdo dois
 			</p:column>
+			<p:column id="colunaTre" headerText="#{proper['proper.label.complemento']}">
+				Conteúdo três
+			</p:column>
+			<p:column id="colunaQuatro" headerText="#{proper['proper.label.bairro']}">
+				Conteúdo quatro
+			</p:column>
+			<p:column id="colunaCinco" headerText="#{proper['proper.label.localidade']}">
+				Conteúdo cinco
+			</p:column>
+			<p:column id="colunaSeis" headerText="#{proper['proper.label.uf']}">
+				Conteúdo seis
+			</p:column>
+			<p:column id="colunaSete" headerText="#{proper['proper.label.unidade']}">
+				Conteúdo sete
+			</p:column>
+			<p:column id="colunaOito" headerText="#{proper['proper.label.ibge']}">
+				Conteúdo oito
+			</p:column>
+			<p:column id="colunaNove" headerText="#{proper['proper.label.gia']}">
+				Conteúdo nove
+			</p:column>			
 		</p:dataTable>
 	</h:form>
 
