@@ -8,7 +8,11 @@ import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-
+/**
+ * 
+ * @author alersonr
+ *
+ */
 @ManagedBean(name = "enderecoBean")
 @SessionScoped
 public class EnderecoBean implements Serializable {
