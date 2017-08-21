@@ -1,6 +1,8 @@
 package br.com.personalPrpject.bean;
 
 import java.io.Serializable;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -8,22 +10,26 @@ import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+
+import br.com.personalPrpject.model.EnderecoBusca;
+import br.com.personalPrpject.service.impl.EnderecoServiceImpl;
 /**
  * 
  * @author alersonr
  *
  */
-@ManagedBean(name = "enderecoBean")
 @SessionScoped
+@ManagedBean(name = "enderecoBean")
 public class EnderecoBean implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 3817194591110827981L;
-	private String estado;
 	private Map<String, String> estados = new HashMap<String, String>();
 	private Map<String, String> listaEstadosOrdenada = new LinkedHashMap<>();
+	private EnderecoBusca enderecoBusca = new EnderecoBusca();
+	private EnderecoServiceImpl service = new EnderecoServiceImpl();
 
 	@PostConstruct
 	public void listaEstados() {
@@ -60,12 +66,16 @@ public class EnderecoBean implements Serializable {
 		estados.entrySet().stream().sorted(Map.Entry.<String, String>comparingByKey()).forEachOrdered(x -> listaEstadosOrdenada.put(x.getKey(), x.getKey()));
 	}
 
-	public String getEstado() {
-		return estado;
+	public void buscarCep() {
+		service.chamarWebService("", "", "");
 	}
 
-	public void setEstado(String estado) {
-		this.estado = estado;
+	public EnderecoBusca getEnderecoBusca() {
+		return enderecoBusca;
+	}
+
+	public void setEnderecoBusca(EnderecoBusca enderecoBusca) {
+		this.enderecoBusca = enderecoBusca;
 	}
 
 	public Map<String, String> getEstados() {

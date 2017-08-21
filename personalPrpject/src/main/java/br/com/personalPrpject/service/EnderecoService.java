@@ -8,5 +8,7 @@ package br.com.personalPrpject.service;
  *
  */
 public interface EnderecoService {
+	
+	public void chamarWebService(String uf, String localidade, String logradouro);
 
 }
