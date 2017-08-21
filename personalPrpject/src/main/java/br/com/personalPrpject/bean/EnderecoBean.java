@@ -1,8 +1,6 @@
 package br.com.personalPrpject.bean;
 
 import java.io.Serializable;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -67,7 +65,7 @@ public class EnderecoBean implements Serializable {
 	}
 
 	public void buscarCep() {
-		service.chamarWebService("", "", "");
+		service.chamarWebService(enderecoBusca.getUf(), enderecoBusca.getLocalidade(), enderecoBusca.getLogradouro());
 	}
 
 	public EnderecoBusca getEnderecoBusca() {
