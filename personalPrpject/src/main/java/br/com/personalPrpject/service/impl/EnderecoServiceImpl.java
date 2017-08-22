@@ -18,7 +18,7 @@ import org.dozer.Mapper;
 
 import br.com.personalPrpject.jaxb.Xmlcep;
 import br.com.personalPrpject.model.EnderecoDozer;
-import br.com.personalPrpject.model.EnderecoDozer.Enderecos.Endereco;
+import br.com.personalPrpject.model.EnderecoDozer.Enderecos;
 import br.com.personalPrpject.service.EnderecoService;
 import br.com.personalPrpject.util.Utils;
 
@@ -29,7 +29,8 @@ import br.com.personalPrpject.util.Utils;
  */
 public class EnderecoServiceImpl implements EnderecoService {
 
-	public void chamarWebService(String uf, String localidade, String logradouro) {
+	public Enderecos chamarWebService(String uf, String localidade, String logradouro) {
+		Enderecos listaEnderecoDozerMapper = null;
 		String localidadeSemCaraterEspecial = Utils.retiraCaracteresEspeciais(localidade);
 		String logradouroSemCaracterEspecial = Utils.retiraCaracteresEspeciais(logradouro);
 		try {
@@ -41,7 +42,7 @@ public class EnderecoServiceImpl implements EnderecoService {
 			JAXBContext jaxbContext = JAXBContext.newInstance(Xmlcep.class);
 			Unmarshaller jaxbUnmarsheller = jaxbContext.createUnmarshaller();
 			Xmlcep xmlcep = (Xmlcep) jaxbUnmarsheller.unmarshal(bufferedReader);
-			dozerMapper(xmlcep);
+			listaEnderecoDozerMapper = dozerMapper(xmlcep);
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (JAXBException e) {
@@ -49,16 +50,15 @@ public class EnderecoServiceImpl implements EnderecoService {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		return listaEnderecoDozerMapper;
 	}
 
-	private void dozerMapper(Xmlcep xmlcep) {
+	private Enderecos dozerMapper(Xmlcep xmlcep) {
 		List<String> configurationDozerMaper = new ArrayList<String>();
 		configurationDozerMaper.add("dozerMappingWS.xml");
 		Mapper mapper = new DozerBeanMapper(configurationDozerMaper);
 		EnderecoDozer.Enderecos enderecoDozer = (EnderecoDozer.Enderecos) mapper.map(xmlcep.getEnderecos(), EnderecoDozer.Enderecos.class, "caseA");
-		for (Endereco end : enderecoDozer.getEndereco()) {
-			System.out.println(end.getBairro());
-		}
+		return enderecoDozer;
 	}
 
 }

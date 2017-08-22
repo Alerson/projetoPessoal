@@ -10,6 +10,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import br.com.personalPrpject.model.EnderecoBusca;
+import br.com.personalPrpject.model.EnderecoDozer.Enderecos;
 import br.com.personalPrpject.service.impl.EnderecoServiceImpl;
 /**
  * 
@@ -28,6 +29,7 @@ public class EnderecoBean implements Serializable {
 	private Map<String, String> listaEstadosOrdenada = new LinkedHashMap<>();
 	private EnderecoBusca enderecoBusca = new EnderecoBusca();
 	private EnderecoServiceImpl service = new EnderecoServiceImpl();
+	private Enderecos listaEnderecoDozerMapper;
 
 	@PostConstruct
 	public void listaEstados() {
@@ -65,7 +67,23 @@ public class EnderecoBean implements Serializable {
 	}
 
 	public void buscarCep() {
-		service.chamarWebService(enderecoBusca.getUf(), enderecoBusca.getLocalidade(), enderecoBusca.getLogradouro());
+		listaEnderecoDozerMapper = service.chamarWebService(enderecoBusca.getUf(), enderecoBusca.getLocalidade(), enderecoBusca.getLogradouro());
+	}
+
+	public Enderecos getListaEnderecoDozerMapper() {
+		return listaEnderecoDozerMapper;
+	}
+
+	public void setListaEnderecoDozerMapper(Enderecos listaEnderecoDozerMapper) {
+		this.listaEnderecoDozerMapper = listaEnderecoDozerMapper;
+	}
+
+	public EnderecoServiceImpl getService() {
+		return service;
+	}
+
+	public void setService(EnderecoServiceImpl service) {
+		this.service = service;
 	}
 
 	public EnderecoBusca getEnderecoBusca() {

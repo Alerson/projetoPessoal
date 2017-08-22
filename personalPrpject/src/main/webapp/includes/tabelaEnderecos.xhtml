@@ -1,11 +1,10 @@
-<!DOCTYPE html>
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
-	<h:form id="formListaEnderecos" prependId="false">
+	<h:form id="formListaEnderecos" acceptcharset="UTF-8" prependId="false">
 
 		<p:fieldset style="margin-bottom:20px; margin-top: 15px;" legend="Dados de entrada" id="idLayoutCamposEntrada">
 			<h:panelGrid columns="7">
@@ -21,38 +20,55 @@
 				<p:outputLabel style="margin-left: 20px;" id="idLogradouroLbl" value="#{proper['proper.label.logradouro']}" />
 				<p:inputText style="margin-left: 10px;" id="idLogradouroTxt" required="true" value="#{enderecoBean.enderecoBusca.logradouro}" />
 	
-				<p:commandButton style="margin-left: 20px;" value="#{proper['proper.label.buttonBuscar']}" icon="fa fa-refresh" action="#{enderecoBean.buscarCep}" />
+				<p:commandButton style="margin-left: 20px;" value="#{proper['proper.label.buttonBuscar']}" icon="fa fa-refresh" action="#{enderecoBean.buscarCep}" update="idDataTableEndereco" />
 			</h:panelGrid>
 		</p:fieldset>
 
-		<p:dataTable id="idDataTableEndereco" emptyMessage="Nenhum registro encontrado">
+		<p:dataTable id="idDataTableEndereco" emptyMessage="Nenhum registro encontrado" rows="15" paginator="true" var="item" value="#{enderecoBean.listaEnderecoDozerMapper.endereco}" >
 			<p:column id="colunaUm" headerText="#{proper['proper.label.cep']}">
-				Conteúdo um
+				<div id="idUm" align="center">
+					<h:outputText value="#{item.cep}" />
+				</div>
 			</p:column>
-			<p:column id="colunaDois"
-				headerText="#{proper['proper.label.logradouro']}">
-				Conteúdo dois
+			<p:column id="colunaDois" headerText="#{proper['proper.label.logradouro']}">
+				<div id="idDois" align="center">
+					<h:outputText value="#{item.logradouro}" />
+				</div>
 			</p:column>
 			<p:column id="colunaTre" headerText="#{proper['proper.label.complemento']}">
-				Conteúdo três
+				<div id="idTres" align="center">
+					<h:outputText value="#{item.complemento}" />
+				</div>
 			</p:column>
 			<p:column id="colunaQuatro" headerText="#{proper['proper.label.bairro']}">
-				Conteúdo quatro
+				<div id="idQuatro" align="center">
+					<h:outputText value="#{item.bairro}" />
+				</div>
 			</p:column>
 			<p:column id="colunaCinco" headerText="#{proper['proper.label.localidade']}">
-				Conteúdo cinco
+				<div id="isCinco" align="center">
+					<h:outputText value="#{item.localidade}" />
+				</div>
 			</p:column>
 			<p:column id="colunaSeis" headerText="#{proper['proper.label.uf']}">
-				Conteúdo seis
+				<div id="idSeis" align="center">
+					<h:outputText value="#{item.uf}" />
+				</div>
 			</p:column>
 			<p:column id="colunaSete" headerText="#{proper['proper.label.unidade']}">
-				Conteúdo sete
+				<div id="idSete" align="center">
+					<h:outputText value="#{item.unidade}" />
+				</div>
 			</p:column>
 			<p:column id="colunaOito" headerText="#{proper['proper.label.ibge']}">
-				Conteúdo oito
+				<div id="idOito" align="center">
+					<h:outputText value="#{item.ibge}" />
+				</div>
 			</p:column>
 			<p:column id="colunaNove" headerText="#{proper['proper.label.gia']}">
-				Conteúdo nove
+				<div id="idNove" align="center">
+					<h:outputText value="#{item.gia}" />
+				</div>
 			</p:column>
 		</p:dataTable>
 	</h:form>

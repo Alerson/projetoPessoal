@@ -27,46 +27,47 @@ public class Utils {
 		}
 		return date;
 	}
-	
-	public static String dateFormatToString(Date date, String format) {		
-		if(date == null) 
+
+	public static String dateFormatToString(Date date, String format) {
+		if (date == null)
 			return "";
-	     
-		SimpleDateFormat out = new SimpleDateFormat(format);  
-		
+
+		SimpleDateFormat out = new SimpleDateFormat(format);
+
 		try {
-			return out.format(date);  
-		} catch(Exception e) {
+			return out.format(date);
+		} catch (Exception e) {
 			return null;
 		}
 	}
-	
+
 	public static Date dateZeroHourToRange(Date date) {
 		Calendar calendar = Calendar.getInstance();
 		calendar.setTime(date);
 		calendar.set(Calendar.HOUR_OF_DAY, 0);
 		calendar.set(Calendar.MINUTE, 0);
 		calendar.set(Calendar.SECOND, 0);
-		
+
 		return calendar.getTime();
 	}
-	
+
 	public static Date dateLastHourToRange(Date date) {
 		Calendar calendar = Calendar.getInstance();
 		calendar.setTime(date);
 		calendar.set(Calendar.HOUR_OF_DAY, 23);
 		calendar.set(Calendar.MINUTE, 59);
 		calendar.set(Calendar.SECOND, 59);
-		
+
 		return calendar.getTime();
 	}
-	public static boolean isThisDateValid(String dateToValidate, String dateFromat){
-		 
-		if(dateToValidate == null){
+
+	public static boolean isThisDateValid(String dateToValidate, String dateFromat) {
+
+		if (dateToValidate == null) {
 			return false;
-		} 
+		}
 		SimpleDateFormat sdf = new SimpleDateFormat(dateFromat);
-		sdf.setLenient(false); 
+		sdf.setLenient(false);
 		try {
 			Date date = sdf.parse(dateToValidate);
 		} catch (ParseException e) {
@@ -100,30 +101,4 @@ public class Utils {
 		passa = passa.replaceAll("[^!-ÿ]{1}[^ -ÿ]{0,}[^!-ÿ]{1}|[^!-ÿ]{1}", " ");*/
 		return passa;
 	}
-	
-/*	public static String retiraCaracteresEspeciais(String stringFonte) {
-		String passa = stringFonte;
-		passa = passa.replaceAll("[ÂÀÁÄÃ]", "A");
-		passa = passa.replaceAll("[âãàáä]", "a");
-		passa = passa.replaceAll("[ÊÈÉË]", "E");
-		passa = passa.replaceAll("[êèéë]", "e");
-		passa = passa.replaceAll("ÎÍÌÏ", "I");
-		passa = passa.replaceAll("îíìï", "i");
-		passa = passa.replaceAll("[ÔÕÒÓÖ]", "O");
-		passa = passa.replaceAll("[ôõòóö]", "o");
-		passa = passa.replaceAll("[ÛÙÚÜ]", "U");
-		passa = passa.replaceAll("[ûúùü]", "u");
-		passa = passa.replaceAll("Ç", "C");
-		passa = passa.replaceAll("ç", "c");
-		passa = passa.replaceAll("[ıÿ]", "y");
-		passa = passa.replaceAll("İ", "Y");
-		passa = passa.replaceAll("ñ", "n");
-		passa = passa.replaceAll("Ñ", "N");
-		passa = passa.replaceAll("[-+=*&amp;%$#@!_]", "");
-		passa = passa.replaceAll("['\"]", "");
-		passa = passa.replaceAll("[<>()\\{\\}]", "");
-		passa = passa.replaceAll("['\\\\.,()|/]", "");
-		passa = passa.replaceAll("[^!-ÿ]{1}[^ -ÿ]{0,}[^!-ÿ]{1}|[^!-ÿ]{1}", " ");
-		return passa;
-	}*/
 }
