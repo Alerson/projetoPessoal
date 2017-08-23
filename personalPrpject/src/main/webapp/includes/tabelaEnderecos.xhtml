@@ -4,7 +4,7 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
-	<h:form id="formListaEnderecos" acceptcharset="UTF-8" prependId="false">
+	<h:form id="formListaEnderecos" prependId="false">
 
 		<p:fieldset style="margin-bottom:20px; margin-top: 15px;" legend="Dados de entrada" id="idLayoutCamposEntrada">
 			<h:panelGrid columns="7">
@@ -27,47 +27,47 @@
 		<p:dataTable id="idDataTableEndereco" emptyMessage="Nenhum registro encontrado" rows="15" paginator="true" var="item" value="#{enderecoBean.listaEnderecoDozerMapper.endereco}" >
 			<p:column id="colunaUm" headerText="#{proper['proper.label.cep']}">
 				<div id="idUm" align="center">
-					<h:outputText value="#{item.cep}" />
+					<h:outputText value="#{empty item.cep ? 'N/A' : item.cep}" />
 				</div>
 			</p:column>
 			<p:column id="colunaDois" headerText="#{proper['proper.label.logradouro']}">
 				<div id="idDois" align="center">
-					<h:outputText value="#{item.logradouro}" />
+					<h:outputText value="#{empty item.logradouro ? 'N/A' : item.logradouro}" />
 				</div>
 			</p:column>
 			<p:column id="colunaTre" headerText="#{proper['proper.label.complemento']}">
 				<div id="idTres" align="center">
-					<h:outputText value="#{item.complemento}" />
+					<h:outputText value="#{empty item.complemento ? 'N/A' : item.complemento}" />
 				</div>
 			</p:column>
 			<p:column id="colunaQuatro" headerText="#{proper['proper.label.bairro']}">
 				<div id="idQuatro" align="center">
-					<h:outputText value="#{item.bairro}" />
+					<h:outputText value="#{empty item.bairro ? 'N/A' : item.bairro}" />
 				</div>
 			</p:column>
 			<p:column id="colunaCinco" headerText="#{proper['proper.label.localidade']}">
 				<div id="isCinco" align="center">
-					<h:outputText value="#{item.localidade}" />
+					<h:outputText value="#{empty item.localidade ? 'N/A' : item.localidade}" />
 				</div>
 			</p:column>
 			<p:column id="colunaSeis" headerText="#{proper['proper.label.uf']}">
 				<div id="idSeis" align="center">
-					<h:outputText value="#{item.uf}" />
+					<h:outputText value="#{empty item.uf ? 'N/A' : item.uf}" />
 				</div>
 			</p:column>
 			<p:column id="colunaSete" headerText="#{proper['proper.label.unidade']}">
 				<div id="idSete" align="center">
-					<h:outputText value="#{item.unidade}" />
+					<h:outputText value="#{empty item.unidade ? 'N/A' : item.unidade}" />
 				</div>
 			</p:column>
 			<p:column id="colunaOito" headerText="#{proper['proper.label.ibge']}">
 				<div id="idOito" align="center">
-					<h:outputText value="#{item.ibge}" />
+					<h:outputText value="#{item.ibge ==  NULL ? 'N/A': item.ibge}" />
 				</div>
 			</p:column>
 			<p:column id="colunaNove" headerText="#{proper['proper.label.gia']}">
 				<div id="idNove" align="center">
-					<h:outputText value="#{item.gia}" />
+					<h:outputText value="#{empty item.gia ? 'N/A' : item.gia}" />
 				</div>
 			</p:column>
 		</p:dataTable>

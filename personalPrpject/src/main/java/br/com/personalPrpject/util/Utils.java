@@ -78,27 +78,27 @@ public class Utils {
 
 	public static String retiraCaracteresEspeciais(String stringFonte) {
 		String passa = stringFonte;
-		passa = passa.replaceAll("[ÂÀÁÄÃ]", "A");
-		passa = passa.replaceAll("[âãàáä]", "a");
-		passa = passa.replaceAll("[ÊÈÉË]", "E");
-		passa = passa.replaceAll("[êèéë]", "e");
-		passa = passa.replaceAll("ÎÍÌÏ", "I");
-		passa = passa.replaceAll("îíìï", "i");
-		passa = passa.replaceAll("[ÔÕÒÓÖ]", "O");
-		passa = passa.replaceAll("[ôõòóö]", "o");
-		passa = passa.replaceAll("[ÛÙÚÜ]", "U");
-		passa = passa.replaceAll("[ûúùü]", "u");
-		passa = passa.replaceAll("Ç", "C");
-		passa = passa.replaceAll("ç", "c");
-		/*passa = passa.replaceAll("[ıÿ]", "y");
-		passa = passa.replaceAll("İ", "Y");
-		passa = passa.replaceAll("ñ", "n");
-		passa = passa.replaceAll("Ñ", "N");
+		passa = passa.replaceAll("[Ã‚Ã€ÃÃ„Ãƒ]", "A");
+		passa = passa.replaceAll("[Ã¢Ã£Ã Ã¡Ã¤]", "a");
+		passa = passa.replaceAll("[ÃŠÃˆÃ‰Ã‹]", "E");
+		passa = passa.replaceAll("[ÃªÃ¨Ã©Ã«]", "e");
+		passa = passa.replaceAll("ÃÃÃŒÃ", "I");
+		passa = passa.replaceAll("Ã®Ã­Ã¬Ã¯", "i");
+		passa = passa.replaceAll("[Ã”Ã•Ã’Ã“Ã–]", "O");
+		passa = passa.replaceAll("[Ã´ÃµÃ²Ã³Ã¶]", "o");
+		passa = passa.replaceAll("[Ã›Ã™ÃšÃœ]", "U");
+		passa = passa.replaceAll("[Ã»ÃºÃ¹Ã¼]", "u");
+		passa = passa.replaceAll("Ã‡", "C");
+		passa = passa.replaceAll("Ã§", "c");
+		/*passa = passa.replaceAll("[Ã½Ã¿]", "y");
+		passa = passa.replaceAll("Ã", "Y");
+		passa = passa.replaceAll("Ã±", "n");
+		passa = passa.replaceAll("Ã‘", "N");
 		passa = passa.replaceAll("[-+=*&amp;%$#@!_]", "");
 		passa = passa.replaceAll("['\"]", "");
 		passa = passa.replaceAll("[<>()\\{\\}]", "");
 		passa = passa.replaceAll("['\\\\.,()|/]", "");
-		passa = passa.replaceAll("[^!-ÿ]{1}[^ -ÿ]{0,}[^!-ÿ]{1}|[^!-ÿ]{1}", " ");*/
+		passa = passa.replaceAll("[^!-Ã¿]{1}[^ -Ã¿]{0,}[^!-Ã¿]{1}|[^!-Ã¿]{1}", " ");*/
 		return passa;
 	}
 }

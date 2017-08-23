@@ -1,6 +1,7 @@
 package br.com.personalPrpject.bean;
 
 import java.io.Serializable;
+import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -11,6 +12,7 @@ import javax.faces.bean.SessionScoped;
 
 import br.com.personalPrpject.model.EnderecoBusca;
 import br.com.personalPrpject.model.EnderecoDozer.Enderecos;
+import br.com.personalPrpject.model.EnderecoDozer.Enderecos.Endereco;
 import br.com.personalPrpject.service.impl.EnderecoServiceImpl;
 /**
  * 
@@ -68,6 +70,8 @@ public class EnderecoBean implements Serializable {
 
 	public void buscarCep() {
 		listaEnderecoDozerMapper = service.chamarWebService(enderecoBusca.getUf(), enderecoBusca.getLocalidade(), enderecoBusca.getLogradouro());
+		for (Endereco end : listaEnderecoDozerMapper.getEndereco()) {
+		}
 	}
 
 	public Enderecos getListaEnderecoDozerMapper() {
