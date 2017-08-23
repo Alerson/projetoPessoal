@@ -1,5 +1,6 @@
 package br.com.personalPrpject.bean;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.nio.charset.Charset;
 import java.util.HashMap;
@@ -9,6 +10,8 @@ import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 
 import br.com.personalPrpject.model.EnderecoBusca;
 import br.com.personalPrpject.model.EnderecoDozer.Enderecos;
@@ -68,10 +71,25 @@ public class EnderecoBean implements Serializable {
 		estados.entrySet().stream().sorted(Map.Entry.<String, String>comparingByKey()).forEachOrdered(x -> listaEstadosOrdenada.put(x.getKey(), x.getKey()));
 	}
 
+	public void enviarEmail() {
+		redirecionar("/pages/email.xhtml");
+	}
+
+	public void telaBusca() {
+		redirecionar("/pages/principal.xhtml");
+	}
+
+	public void redirecionar(String pagina) {
+		try {
+			ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+			externalContext.redirect(externalContext.getRequestContextPath() + pagina);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
 	public void buscarCep() {
 		listaEnderecoDozerMapper = service.chamarWebService(enderecoBusca.getUf(), enderecoBusca.getLocalidade(), enderecoBusca.getLogradouro());
-		for (Endereco end : listaEnderecoDozerMapper.getEndereco()) {
-		}
 	}
 
 	public Enderecos getListaEnderecoDozerMapper() {
