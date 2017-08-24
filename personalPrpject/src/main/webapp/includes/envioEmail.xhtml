@@ -5,7 +5,26 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 	<h:form>
-		<p:outputLabel value="TELA DE BUSCA" />
+		<p>
+			<p:outputLabel value="De: " style="width: 80%;"/>
+			<p:inputText />
+		</p>
+		<p>
+			<p:outputLabel value="Descreva sua mensagem aqui:" />
+		</p>
+		<p align="center">
+			<p:inputTextarea rows="15" cols="147" />
+		</p>
+		<div>
+			<p:outputLabel value="#{proper['proper.label.paragrafoUm']}" />
+		</div>
+		<p:outputLabel value="#{proper['proper.label.paragrafoDois']}" />
+		<p>
+			<p:outputLabel value="#{proper['proper.label.paragrafoTres']}" />
+		</p>
+		<strong>
+			<p:outputLabel value="#{proper['proper.label.paragrafoQuatro']}" />
+		</strong>
 	</h:form>
 
 </ui:composition>
