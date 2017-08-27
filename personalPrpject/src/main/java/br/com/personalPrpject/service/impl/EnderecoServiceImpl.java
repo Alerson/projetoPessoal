@@ -7,8 +7,11 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import javax.faces.component.FacesComponent;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
@@ -27,7 +30,10 @@ import br.com.personalPrpject.util.Utils;
  * @author alersonr
  *
  */
+@FacesComponent
 public class EnderecoServiceImpl implements EnderecoService {
+
+	private Map<String, String> estados = new HashMap<String, String>();
 
 	public Enderecos chamarWebService(String uf, String localidade, String logradouro) {
 		Enderecos listaEnderecoDozerMapper = null;
@@ -59,6 +65,38 @@ public class EnderecoServiceImpl implements EnderecoService {
 		Mapper mapper = new DozerBeanMapper(configurationDozerMaper);
 		EnderecoDozer.Enderecos enderecoDozer = (EnderecoDozer.Enderecos) mapper.map(xmlcep.getEnderecos(), EnderecoDozer.Enderecos.class, "caseA");
 		return enderecoDozer;
+	}
+
+	public HashMap<String, String> listaEstadosBrasileiro() {
+		estados = new HashMap<String, String>();
+		estados.put("AC", "AC");
+		estados.put("AL", "AL");
+		estados.put("AP", "AP");
+		estados.put("AM", "AM");
+		estados.put("BA", "BA");
+		estados.put("CE", "CE");
+		estados.put("DF", "DF");
+		estados.put("ES", "ES");
+		estados.put("GO", "GO");
+		estados.put("MA", "MA");
+		estados.put("MT", "MT");
+		estados.put("MS", "MS");
+		estados.put("MG", "MG");
+		estados.put("PA", "PA");
+		estados.put("PB", "PB");
+		estados.put("PR", "PR");
+		estados.put("PE", "PE");
+		estados.put("PI", "PI");
+		estados.put("RJ", "RJ");
+		estados.put("RN", "RN");
+		estados.put("RS", "RS");
+		estados.put("RO", "RO");
+		estados.put("RR", "RR");
+		estados.put("SC", "SC");
+		estados.put("SP", "SP");
+		estados.put("SE", "SE");
+		estados.put("TO", "TO");
+		return (HashMap<String, String>) estados;
 	}
 
 }

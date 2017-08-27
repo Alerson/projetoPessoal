@@ -8,19 +8,19 @@
 
 		<p:fieldset style="margin-bottom:20px; margin-top: 15px;" legend="Dados de entrada" id="idLayoutCamposEntrada">
 			<h:panelGrid columns="7">
-				<p:outputLabel id="idLocalidadeLbl" value="#{proper['proper.label.localidade']}" />
-				<p:inputText style="margin-left: 10px;" id="idLocalidadeTxt" required="true" value="#{enderecoBean.enderecoBusca.localidade}" />
+				<p:outputLabel id="idLocalidadeLbl" value="#{proper['proper.label.localidade']}:" />
+				<p:inputText style="margin-left: 10px;" id="idLocalidadeTxt" required="true" requiredMessage="#{proper['proper.message.cidade']}" value="#{enderecoBean.enderecoBusca.localidade}" />
 	
-				<p:outputLabel style="margin-left: 20px;" id="idUfLbl" value="#{proper['proper.label.uf']}" />
-				<p:selectOneMenu style="margin-left: 10px;" id="idListaEstados" effect="fold" required="true" value="#{enderecoBean.enderecoBusca.uf}">
+				<p:outputLabel style="margin-left: 20px;" id="idUfLbl" value="#{proper['proper.label.uf']}:" />
+				<p:selectOneMenu style="margin-left: 10px;" id="idListaEstados" effect="fold" required="true" requiredMessage="#{proper['proper.message.uf']}" value="#{enderecoBean.enderecoBusca.uf}">
 					<f:selectItem itemLabel="Selecione" itemValue="" noSelectionOption="true" />
 					<f:selectItems value="#{enderecoBean.listaEstadosOrdenada}" />
 				</p:selectOneMenu>
 	
-				<p:outputLabel style="margin-left: 20px;" id="idLogradouroLbl" value="#{proper['proper.label.logradouro']}" />
-				<p:inputText style="margin-left: 10px;" id="idLogradouroTxt" required="true" value="#{enderecoBean.enderecoBusca.logradouro}" />
+				<p:outputLabel style="margin-left: 20px;" id="idLogradouroLbl" value="#{proper['proper.label.logradouro']}:" />
+				<p:inputText style="margin-left: 10px;" id="idLogradouroTxt" required="true" requiredMessage="#{proper['proper.message.rua']}" value="#{enderecoBean.enderecoBusca.logradouro}" />
 	
-				<p:commandButton style="margin-left: 20px;" value="#{proper['proper.label.buttonBuscar']}" icon="fa fa-refresh" action="#{enderecoBean.buscarCep}" update="idDataTableEndereco" />
+				<p:commandButton style="margin-left: 20px;" value="#{proper['proper.label.buttonBuscar']}" icon="fa fa-refresh" action="#{enderecoBean.buscarCep}" update="idDataTableEndereco, :msgGlobal" />
 			</h:panelGrid>
 		</p:fieldset>
 

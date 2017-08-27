@@ -2,12 +2,12 @@ package br.com.personalPrpject.bean;
 
 import java.io.IOException;
 import java.io.Serializable;
-import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.ExternalContext;
@@ -15,8 +15,8 @@ import javax.faces.context.FacesContext;
 
 import br.com.personalPrpject.model.EnderecoBusca;
 import br.com.personalPrpject.model.EnderecoDozer.Enderecos;
-import br.com.personalPrpject.model.EnderecoDozer.Enderecos.Endereco;
 import br.com.personalPrpject.service.impl.EnderecoServiceImpl;
+import br.com.personalPrpject.util.JSFUtil;
 /**
  * 
  * @author alersonr
@@ -38,34 +38,7 @@ public class EnderecoBean implements Serializable {
 
 	@PostConstruct
 	public void listaEstados() {
-		estados = new HashMap<String, String>();
-		estados.put("AC", "AC");
-		estados.put("AL", "AL");
-		estados.put("AP", "AP");
-		estados.put("AM", "AM");
-		estados.put("BA", "BA");
-		estados.put("CE", "CE");
-		estados.put("DF", "DF");
-		estados.put("ES", "ES");
-		estados.put("GO", "GO");
-		estados.put("MA", "MA");
-		estados.put("MT", "MT");
-		estados.put("MS", "MS");
-		estados.put("MG", "MG");
-		estados.put("PA", "PA");
-		estados.put("PB", "PB");
-		estados.put("PR", "PR");
-		estados.put("PE", "PE");
-		estados.put("PI", "PI");
-		estados.put("RJ", "RJ");
-		estados.put("RN", "RN");
-		estados.put("RS", "RS");
-		estados.put("RO", "RO");
-		estados.put("RR", "RR");
-		estados.put("SC", "SC");
-		estados.put("SP", "SP");
-		estados.put("SE", "SE");
-		estados.put("TO", "TO");
+		estados = service.listaEstadosBrasileiro();
 
 		// CONCEITO LAMBDA JAVA 8 PARA ORDENAR A LISTA HASHMAP ACIMA
 		estados.entrySet().stream().sorted(Map.Entry.<String, String>comparingByKey()).forEachOrdered(x -> listaEstadosOrdenada.put(x.getKey(), x.getKey()));
@@ -90,6 +63,9 @@ public class EnderecoBean implements Serializable {
 
 	public void buscarCep() {
 		listaEnderecoDozerMapper = service.chamarWebService(enderecoBusca.getUf(), enderecoBusca.getLocalidade(), enderecoBusca.getLogradouro());
+		if(listaEnderecoDozerMapper.getEndereco() == null || listaEnderecoDozerMapper.getEndereco().isEmpty() || listaEnderecoDozerMapper.getEndereco().size() <= 0) {
+			JSFUtil.adicionarMensagem(FacesMessage.SEVERITY_ERROR, "Para os dados informados, não foi encontrado nenhuma informação");
+		}
 	}
 
 	public Enderecos getListaEnderecoDozerMapper() {
