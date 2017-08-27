@@ -9,13 +9,16 @@
 			<p:outputLabel value="De: " style="width: 80%;"/>
 			<p:inputText />
 		</p>
-		<p>
-			<p:outputLabel value="Descreva sua mensagem aqui:" />
-		</p>
-		<p align="center">
-			<p:inputTextarea rows="15" style="width: 99%;" />
-		</p>
 		<div>
+			<p:outputLabel value="#{proper['proper.label.caixaDeTexto']}" />
+		</div>
+		<div align="center">
+			<p:inputTextarea rows="15" style="width: 99%;" />
+		</div>
+		<div style="margin-top:5px">
+			<p:commandButton value="#{proper['proper.button.enviar']}" />
+		</div>
+		<div style="margin-top:15px">
 			<p:outputLabel value="#{proper['proper.label.paragrafoUm']}" />
 		</div>
 		<p:outputLabel value="#{proper['proper.label.paragrafoDois']}" />
