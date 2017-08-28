@@ -11,7 +11,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlElement;
-
+/**
+ * 
+ * @author alersonr
+ *
+ */
 public class EnderecoDozer {
 
 	protected EnderecoDozer.Enderecos enderecos;
