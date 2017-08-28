@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 public class EncodingFilter implements Filter {
 
+	@SuppressWarnings("unused")
 	private String encoding;
 	private FilterConfig filterConfig;
 

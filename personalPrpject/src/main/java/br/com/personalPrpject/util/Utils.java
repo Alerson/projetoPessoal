@@ -69,6 +69,7 @@ public class Utils {
 		SimpleDateFormat sdf = new SimpleDateFormat(dateFromat);
 		sdf.setLenient(false);
 		try {
+			@SuppressWarnings("unused")
 			Date date = sdf.parse(dateToValidate);
 		} catch (ParseException e) {
 			return false;

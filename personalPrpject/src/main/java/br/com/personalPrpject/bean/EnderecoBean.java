@@ -9,13 +9,14 @@ import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
 import br.com.personalPrpject.model.EnderecoBusca;
 import br.com.personalPrpject.model.EnderecoDozer.Enderecos;
-import br.com.personalPrpject.service.impl.EnderecoServiceImpl;
+import br.com.personalPrpject.service.EnderecoService;
 import br.com.personalPrpject.util.JSFUtil;
 /**
  * 
@@ -33,15 +34,22 @@ public class EnderecoBean implements Serializable {
 	private Map<String, String> estados = new HashMap<String, String>();
 	private Map<String, String> listaEstadosOrdenada = new LinkedHashMap<>();
 	private EnderecoBusca enderecoBusca = new EnderecoBusca();
-	private EnderecoServiceImpl service = new EnderecoServiceImpl();
+//	private EnderecoServiceImpl service = new EnderecoServiceImpl();
 	private Enderecos listaEnderecoDozerMapper;
+	
+	@ManagedProperty(value = "#{enderecoServiceImpl}")
+	private EnderecoService service;
 
 	@PostConstruct
 	public void listaEstados() {
-		estados = service.listaEstadosBrasileiro();
+		try {
+			estados = service.listaEstadosBrasileiro();
 
-		// CONCEITO LAMBDA JAVA 8 PARA ORDENAR A LISTA HASHMAP ACIMA
-		estados.entrySet().stream().sorted(Map.Entry.<String, String>comparingByKey()).forEachOrdered(x -> listaEstadosOrdenada.put(x.getKey(), x.getKey()));
+			// CONCEITO LAMBDA JAVA 8 PARA ORDENAR A LISTA HASHMAP ACIMA
+			estados.entrySet().stream().sorted(Map.Entry.<String, String>comparingByKey()).forEachOrdered(x -> listaEstadosOrdenada.put(x.getKey(), x.getKey()));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void enviarEmail() {
@@ -76,11 +84,19 @@ public class EnderecoBean implements Serializable {
 		this.listaEnderecoDozerMapper = listaEnderecoDozerMapper;
 	}
 
-	public EnderecoServiceImpl getService() {
+/*	public EnderecoServiceImpl getService() {
 		return service;
 	}
 
 	public void setService(EnderecoServiceImpl service) {
+		this.service = service;
+	}*/
+	
+	public EnderecoService getService() {
+		return service;
+	}
+
+	public void setService(EnderecoService service) {
 		this.service = service;
 	}
 

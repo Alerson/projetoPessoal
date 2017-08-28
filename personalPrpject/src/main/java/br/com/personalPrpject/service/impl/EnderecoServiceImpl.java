@@ -11,13 +11,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.faces.component.FacesComponent;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
 import org.dozer.DozerBeanMapper;
 import org.dozer.Mapper;
+import org.springframework.stereotype.Service;
 
 import br.com.personalPrpject.jaxb.Xmlcep;
 import br.com.personalPrpject.model.EnderecoDozer;
@@ -30,7 +30,7 @@ import br.com.personalPrpject.util.Utils;
  * @author alersonr
  *
  */
-@FacesComponent
+@Service
 public class EnderecoServiceImpl implements EnderecoService {
 
 	private Map<String, String> estados = new HashMap<String, String>();
