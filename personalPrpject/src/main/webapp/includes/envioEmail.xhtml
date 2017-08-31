@@ -5,29 +5,35 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 	<h:form>
-		<p>
-			<p:outputLabel value="De: " style="width: 80%;"/>
-			<p:inputText />
-		</p>
-		<div>
-			<p:outputLabel value="#{proper['proper.label.caixaDeTexto']}" />
-		</div>
-		<div align="center">
-			<p:inputTextarea rows="14" style="width: 99%;" />
-		</div>
-		<div style="margin-top:5px">
-			<p:commandButton value="#{proper['proper.button.enviar']}" />
-		</div>
-		<div style="margin-top:15px">
-			<p:outputLabel value="#{proper['proper.label.paragrafoUm']}" />
-		</div>
-		<p:outputLabel value="#{proper['proper.label.paragrafoDois']}" />
-		<p>
-			<p:outputLabel value="#{proper['proper.label.paragrafoTres']}" />
-		</p>
-		<strong>
-			<p:outputLabel value="#{proper['proper.label.paragrafoQuatro']}" />
-		</strong>
+		<h:panelGrid columns="1">
+			<div align="left">
+				<p:outputLabel value="#{proper['proper.label.seuEmail']}" />
+				<p:inputText style="width: 340px;" required="true" requiredMessage="#{proper['proper.message.seuEmail']}" value="#{emailBean.email.emailPessoal}" />
+			</div>
+			<div align="left">
+				<p:outputLabel value="#{proper['proper.label.assunto']}" />
+				<p:inputText style="width: 510px;" required="true" requiredMessage="#{proper['proper.message.assunto']}" value="#{emailBean.email.assunto}" />
+			</div>
+			<div align="left">
+				<p:outputLabel value="#{proper['proper.label.caixaDeTexto']}" />
+			</div>
+			<div align="left">
+				<p:inputTextarea rows="14" style="width: 99%;" required="true" requiredMessage="#{proper['proper.message.caixaDeTexto']}" value="#{emailBean.email.menssagem}" />
+			</div>
+			<div align="left">
+				<p:commandButton value="#{proper['proper.button.enviar']}" action="#{emailBean.enviarEmail()}" update=":msgGlobal" />
+			</div>
+			<div align="left">
+				<p:outputLabel value="#{proper['proper.label.paragrafoUm']}" />
+			</div>
+			<p:outputLabel value="#{proper['proper.label.paragrafoDois']}" />
+			<div align="left">
+				<p:outputLabel value="#{proper['proper.label.paragrafoTres']}" />
+			</div>
+			<div align="left">
+				<p:outputLabel style="font-weight:bold" value="#{proper['proper.label.paragrafoQuatro']}" />
+			</div>
+		</h:panelGrid>
 	</h:form>
 
 </ui:composition>
