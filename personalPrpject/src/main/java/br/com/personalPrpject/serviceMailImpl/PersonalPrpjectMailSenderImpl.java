@@ -38,8 +38,8 @@ public class PersonalPrpjectMailSenderImpl extends JavaMailSenderImpl {
 		mailProps.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
 		mailProps.put("mail.smtp.auth", "true");
 		mailProps.put("mail.smtp.port", "465");
-		// mailProps.put("mail.username", "alerson.rigo@gmail.com");
-		// mailProps.put("mail.password", "470700321");
+		// mailProps.put("mail.username", "xxxx@gmail.com");
+		// mailProps.put("mail.password", "xxxxxxxx");
 		super.setJavaMailProperties(mailProps);
 
 		session = Session.getDefaultInstance(mailProps, new Authenticator() {
