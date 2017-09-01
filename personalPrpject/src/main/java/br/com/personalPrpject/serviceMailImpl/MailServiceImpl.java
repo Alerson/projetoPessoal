@@ -96,7 +96,8 @@ public class MailServiceImpl implements MailService {
 	public void sendMail(String from, String endereco, String subject, String body) throws Exception {
 		InternetAddress fromAddr = new InternetAddress(from);
 
-		MimeMessage message = mailSender.createMimeMessage();
+		//MimeMessage message = mailSender.createMimeMessage();
+		MimeMessage message = new MimeMessage(mailSender.getSession());
 		message.setHeader("Content-Transfer-Encoding", "ISO-8859-1");
 		message.setFrom(fromAddr);
 		message.setRecipients(javax.mail.Message.RecipientType.TO, endereco);
