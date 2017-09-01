@@ -37,7 +37,8 @@ public class MailServiceImpl implements MailService {
 
 		InternetAddress fromAddr = new InternetAddress(from);
 
-		MimeMessage message = mailSender.createMimeMessage();
+//		MimeMessage message = mailSender.createMimeMessage(); USADO NO PROJETO (SISTEMATIZACAO - RJ)
+		MimeMessage message = new MimeMessage(mailSender.getSession());
 		message.setHeader("Content-Transfer-Encoding", "ISO-8859-1");
 		message.setFrom(fromAddr);
 		message.setRecipients(javax.mail.Message.RecipientType.TO, toAddrs);

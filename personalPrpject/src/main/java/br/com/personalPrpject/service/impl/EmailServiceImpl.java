@@ -15,9 +15,9 @@ public class EmailServiceImpl implements EmailService {
 	private EnviarEmail email;
 
 	@Override
-	public void enviar(String assunto, String mensagem) {
+	public void enviar(String assunto, String mensagem, String enviadoPor) {
 		try {
-			email.enviarEmail(assunto, mensagem, EMAIL_NOTIFICACAO);
+			email.enviarEmail(assunto, mensagem, EMAIL_NOTIFICACAO, enviadoPor);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

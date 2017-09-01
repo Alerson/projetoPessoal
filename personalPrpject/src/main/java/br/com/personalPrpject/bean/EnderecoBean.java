@@ -5,7 +5,6 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.ResourceBundle;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
@@ -41,8 +40,8 @@ public class EnderecoBean implements Serializable {
 	@ManagedProperty(value = "#{enderecoServiceImpl}")
 	private EnderecoService service;
 
-	@ManagedProperty(value = "#{proper}")
-	private ResourceBundle proper;
+	/*@ManagedProperty(value = "#{proper}")
+	private ResourceBundle proper;*/
 
 	@PostConstruct
 	public void listaEstados() {
@@ -76,7 +75,7 @@ public class EnderecoBean implements Serializable {
 	public void buscarCep() {
 		listaEnderecoDozerMapper = service.chamarWebService(enderecoBusca.getUf(), enderecoBusca.getLocalidade(), enderecoBusca.getLogradouro());
 		if(listaEnderecoDozerMapper.getEndereco() == null || listaEnderecoDozerMapper.getEndereco().isEmpty() || listaEnderecoDozerMapper.getEndereco().size() <= 0) {
-			JSFUtil.adicionarMensagem(FacesMessage.SEVERITY_ERROR, proper.getString("proper.message.naoEncontrado"));
+			JSFUtil.adicionarMensagem(FacesMessage.SEVERITY_ERROR, "Para os dados informados, não foi encontrado nenhuma informação");
 		}
 	}
 
@@ -96,13 +95,13 @@ public class EnderecoBean implements Serializable {
 		this.service = service;
 	}*/
 
-	public ResourceBundle getProper() {
+	/*public ResourceBundle getProper() {
 		return proper;
 	}
 
 	public void setProper(ResourceBundle proper) {
 		this.proper = proper;
-	}
+	}*/
 
 	public EnderecoService getService() {
 		return service;

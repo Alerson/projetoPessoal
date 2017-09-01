@@ -7,6 +7,6 @@ package br.com.personalPrpject.service;
  */
 public interface EmailService {
 
-	public void enviar(String assunto, String mensagem);
+	public void enviar(String assunto, String mensagem, String enviadoPor);
 
 }

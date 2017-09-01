@@ -9,6 +9,11 @@ import javax.faces.bean.SessionScoped;
 import br.com.personalPrpject.model.Email;
 import br.com.personalPrpject.service.EmailService;
 
+/**
+ * 
+ * @author alersonr
+ *
+ */
 @SessionScoped
 @ManagedBean(name = "emailBean")
 public class EmailBean implements Serializable {
@@ -23,7 +28,7 @@ public class EmailBean implements Serializable {
 	private EmailService service;
 
 	public void enviarEmail() {
-		service.enviar(email.getAssunto(), email.getMenssagem());
+		service.enviar(email.getAssunto(), email.getMenssagem(), email.getEmailPessoal());
 	}
 
 	public Email getEmail() {
