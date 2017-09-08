@@ -1,5 +1,8 @@
 package br.com.personalPrpject.util;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import org.apache.commons.mail.DefaultAuthenticator;
 import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.HtmlEmail;
@@ -11,9 +14,9 @@ import org.apache.commons.mail.SimpleEmail;
  */
 public class EnviaEmail {
 
-	private static final String SENDER = "SENDER@buscadorCep.com.br";
-	private static final String PASSWORD = "XXXXXXX";
-	private static final String USER = "XXXXX.XXXXX@gmail.com";
+	private static final String SENDER_USER = "buscardorcep@gmail.com";
+	private static final String PASSWORD = "xxxxxxxx";
+	private static final String RECEIVING_BOX = "alerson.rigo@gmail.com";
 	private static final String PORT_GMAIL_COM = "465";
 	private static final String SMTP_GMAIL_COM = "smtp.gmail.com";
 
@@ -22,13 +25,13 @@ public class EnviaEmail {
 		email.setSSLOnConnect(true);
 		email.setHostName(SMTP_GMAIL_COM);
 		email.setSslSmtpPort(PORT_GMAIL_COM);
-		email.setAuthenticator(new DefaultAuthenticator(USER, PASSWORD));
+		email.setAuthenticator(new DefaultAuthenticator(SENDER_USER, PASSWORD));
 		try {
 			email.setFrom(emailPessoal);
 			email.setDebug(true);
 			email.setSubject(assunto);
 			email.setMsg(mensagem);
-			email.addTo(USER);
+			email.addTo(RECEIVING_BOX);
 			email.send();
 		} catch (EmailException e) {
 			e.printStackTrace();
@@ -40,9 +43,9 @@ public class EnviaEmail {
 		email.setSSLOnConnect(true);
 		email.setHostName(SMTP_GMAIL_COM);
 		email.setSslSmtpPort(PORT_GMAIL_COM);
-		email.setAuthenticator(new DefaultAuthenticator(USER, PASSWORD));
+		email.setAuthenticator(new DefaultAuthenticator(SENDER_USER, PASSWORD));
 		try {
-			email.setFrom(SENDER);
+			email.setFrom(SENDER_USER);
 			email.setDebug(true);
 			email.setSubject(assunto);
 			StringBuilder builder = new StringBuilder();
@@ -50,11 +53,24 @@ public class EnviaEmail {
 			builder.append("<p>" + mensagem + "</p>");
 			builder.append("<p>Enviado por: " + emailPessoal + "</p>");
 			email.setHtmlMsg(builder.toString());
-			email.addTo(USER);
+			email.addTo(RECEIVING_BOX);
 			email.send();
 		} catch (EmailException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public static boolean validarEmail(String email) {
+		boolean isEmailIdValid = false;
+		if (email != null && email.length() > 0) {
+			String expression = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
+			Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
+			Matcher matcher = pattern.matcher(email);
+			if (matcher.matches()) {
+				isEmailIdValid = true;
+			}
+		}
+		return isEmailIdValid;
 	}
 
 }

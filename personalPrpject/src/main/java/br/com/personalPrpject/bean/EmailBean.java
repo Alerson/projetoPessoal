@@ -1,6 +1,7 @@
 package br.com.personalPrpject.bean;
 
 import java.io.Serializable;
+import java.util.ResourceBundle;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
@@ -27,8 +28,11 @@ public class EmailBean implements Serializable {
 	@ManagedProperty(value = "#{emailServiceImpl}")
 	private EmailService service;
 
+	@ManagedProperty("#{proper}")
+	private ResourceBundle proper;
+
 	public void enviarEmail() {
-		service.enviar(email.getAssunto(), email.getMenssagem(), email.getEmailPessoal());
+		service.enviar(email.getAssunto(), email.getMenssagem(), email.getEmailPessoal(), proper.getString("proper.message.emailInvalido"));
 	}
 
 	public Email getEmail() {
@@ -46,5 +50,12 @@ public class EmailBean implements Serializable {
 	public void setService(EmailService service) {
 		this.service = service;
 	}
-	
+
+	public ResourceBundle getProper() {
+		return proper;
+	}
+
+	public void setProper(ResourceBundle proper) {
+		this.proper = proper;
+	}
 }
