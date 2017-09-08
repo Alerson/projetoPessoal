@@ -11,8 +11,9 @@ import org.apache.commons.mail.SimpleEmail;
  */
 public class EnviaEmail {
 
-	private static final String PASSWORD = "xxxxx";
-	private static final String USER = "xxxx.xxxx@gmail.com";
+	private static final String SENDER = "SENDER@buscadorCep.com.br";
+	private static final String PASSWORD = "XXXXXXX";
+	private static final String USER = "XXXXX.XXXXX@gmail.com";
 	private static final String PORT_GMAIL_COM = "465";
 	private static final String SMTP_GMAIL_COM = "smtp.gmail.com";
 
@@ -41,7 +42,7 @@ public class EnviaEmail {
 		email.setSslSmtpPort(PORT_GMAIL_COM);
 		email.setAuthenticator(new DefaultAuthenticator(USER, PASSWORD));
 		try {
-			email.setFrom(emailPessoal);
+			email.setFrom(SENDER);
 			email.setDebug(true);
 			email.setSubject(assunto);
 			StringBuilder builder = new StringBuilder();
