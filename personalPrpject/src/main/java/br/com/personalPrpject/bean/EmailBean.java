@@ -32,7 +32,9 @@ public class EmailBean implements Serializable {
 	private ResourceBundle proper;
 
 	public void enviarEmail() {
-		service.enviar(email.getAssunto(), email.getMenssagem(), email.getEmailPessoal(), proper.getString("proper.message.emailInvalido"));
+		if(service.enviar(email.getAssunto(), email.getMenssagem(), email.getEmailPessoal(), proper.getString("proper.message.emailInvalido"), proper.getString("proper.message.emailEnviado"))) {
+			email = new Email();
+		}
 	}
 
 	public Email getEmail() {

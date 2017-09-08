@@ -4,7 +4,7 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
-	<h:form>
+	<h:form id="formEmail">
 		<h:panelGrid columns="1">
 			<div align="left">
 				<p:outputLabel value="#{proper['proper.label.seuEmail']}" />
@@ -21,7 +21,7 @@
 				<p:inputTextarea rows="14" style="width: 99%;" required="true" requiredMessage="#{proper['proper.message.caixaDeTexto']}" value="#{emailBean.email.menssagem}" />
 			</div>
 			<div align="left">
-				<p:commandButton value="#{proper['proper.button.enviar']}" action="#{emailBean.enviarEmail()}" update=":msgGlobal" />
+				<p:commandButton value="#{proper['proper.button.enviar']}" action="#{emailBean.enviarEmail()}" update="formEmail, :msgGlobal" />
 			</div>
 			<div align="left">
 				<p:outputLabel value="#{proper['proper.label.paragrafoUm']}" />

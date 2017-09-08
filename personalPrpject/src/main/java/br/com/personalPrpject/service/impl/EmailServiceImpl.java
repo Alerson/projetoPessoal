@@ -12,12 +12,16 @@ import br.com.personalPrpject.util.JSFUtil;
 public class EmailServiceImpl implements EmailService {
 
 	@Override
-	public void enviar(String assunto, String mensagem, String enviadoPor, String messageInfo) {
+	public Boolean enviar(String assunto, String mensagem, String enviadoPor, String messageError, String messageSuccess) {
+		boolean retorno = true;
 		if(EnviaEmail.validarEmail(enviadoPor)) {
 			EnviaEmail.enviarHTMLEmail(assunto, mensagem, enviadoPor);
+			JSFUtil.adicionarMensagem(FacesMessage.SEVERITY_INFO, messageSuccess);
 		} else {
-			JSFUtil.adicionarMensagem(FacesMessage.SEVERITY_ERROR, messageInfo);
+			JSFUtil.adicionarMensagem(FacesMessage.SEVERITY_ERROR, messageError);
+			retorno = false;
 		}
+		return retorno;
 		
 	}
 
