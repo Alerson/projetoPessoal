@@ -14,9 +14,9 @@ import org.apache.commons.mail.SimpleEmail;
  */
 public class EnviaEmail {
 
-	private static final String SENDER_USER = "xxxxxxxx@gmail.com";
-	private static final String PASSWORD = "xxxxxxxx";
-	private static final String RECEIVING_BOX = "xxxxxxxxx@gmail.com";
+	private static final String SENDER_USER = "buscardorcep@gmail.com";
+	private static final String PASSWORD = "123qwe!@#Aor";
+	private static final String RECEIVING_BOX = "alerson.rigo@gmail.com";
 	private static final String PORT_GMAIL_COM = "465";
 	private static final String SMTP_GMAIL_COM = "smtp.gmail.com";
 
